@@ -40,6 +40,7 @@
     <Compile Include="Enums\eNumMotoLicenseType.cs" />
     <Compile Include="Enums\eNumNumberOfDoorsInCar.cs" />
     <Compile Include="Enums\eNumVehicleStatusInGarage.cs" />
+    <Compile Include="Enums\eNumVehicleType.cs" />
     <Compile Include="Garage.cs" />
     <Compile Include="GarageClient.cs" />
     <Compile Include="VehicleParts\ElectricEngine.cs" />

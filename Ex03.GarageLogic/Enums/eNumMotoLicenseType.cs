@@ -2,7 +2,7 @@
 {
     public enum eMotorcycleLicenseType
     {
-        A,
+        A = 1,
         A1,
         A2,
         B,

@@ -4,7 +4,8 @@
     {
         public static void Main()
         {
-
+            UIGarage userInterface = new UIGarage();
+            userInterface.StartUI();
         }
     }
 }

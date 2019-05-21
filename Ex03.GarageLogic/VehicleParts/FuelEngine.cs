@@ -9,7 +9,10 @@ namespace Ex03.GarageLogic.VehicleParts
     {
        private eFuelType m_FuelType;
       
+       public FuelEngine (float i_RemainderEnergy, float i_Capacity,  eFuelType i_FuelType) 
+                          :base (i_RemainderEnergy, i_Capacity)
+        {
+            m_FuelType = i_FuelType;
+        }
     }
-
-
 }

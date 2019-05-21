@@ -6,10 +6,19 @@ using Ex03.GarageLogic.VehicleParts;
 
 namespace Ex03.GarageLogic.Vehicles
 {
-    class Car
+    public class Car : Vehicle
     {
-        private eCarColor m_Color;
-        private eNumberOfDoorsInCar m_NumOfDoord;
-        private Engine m_Engine;
+        private readonly eCarColor m_Color;
+        private readonly eNumberOfDoorsInCar m_NumOfDoord;
+        private readonly Engine m_Engine;
+
+        public Car(string i_ModelName, string i_LicenseNumber, float i_PercentageRemainingEnergy, Wheel[] i_Wheels, eCarColor i_CarColor,
+                    eNumberOfDoorsInCar i_NumberOfDoorsInCar, Engine i_Engine)
+                    : base(i_ModelName, i_LicenseNumber, i_PercentageRemainingEnergy, i_Wheels)
+        {
+            m_Color = i_CarColor;
+            m_NumOfDoord = i_NumberOfDoorsInCar;
+            m_Engine = i_Engine;
+        }
     }
 }
