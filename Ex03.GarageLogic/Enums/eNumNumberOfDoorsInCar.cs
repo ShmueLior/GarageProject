@@ -2,7 +2,7 @@
 {
     public enum eNumberOfDoorsInCar
     {
-        Two = 2,
+        Two = 1,
         Three,
         Four,
         Five,

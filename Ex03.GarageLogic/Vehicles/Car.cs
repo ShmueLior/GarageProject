@@ -10,15 +10,23 @@ namespace Ex03.GarageLogic.Vehicles
     {
         private readonly eCarColor m_Color;
         private readonly eNumberOfDoorsInCar m_NumOfDoord;
-        private readonly Engine m_Engine;
 
         public Car(string i_ModelName, string i_LicenseNumber, float i_PercentageRemainingEnergy, Wheel[] i_Wheels, eCarColor i_CarColor,
-                    eNumberOfDoorsInCar i_NumberOfDoorsInCar, Engine i_Engine)
-                    : base(i_ModelName, i_LicenseNumber, i_PercentageRemainingEnergy, i_Wheels)
+                   eNumberOfDoorsInCar i_NumberOfDoorsInCar, Engine i_Engine)
+                    : base(i_ModelName, i_LicenseNumber, i_PercentageRemainingEnergy, i_Wheels, i_Engine)
         {
             m_Color = i_CarColor;
             m_NumOfDoord = i_NumberOfDoorsInCar;
-            m_Engine = i_Engine;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder strBuild = new StringBuilder();
+            strBuild.AppendLine(base.ToString());
+            strBuild.AppendFormat("Car color: {0}", m_Color.ToString());
+            strBuild.AppendFormat("Number of doors: {0}", m_NumOfDoord);
+
+            return strBuild.ToString();
         }
     }
 }

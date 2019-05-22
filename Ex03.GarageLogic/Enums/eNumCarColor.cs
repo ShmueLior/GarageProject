@@ -2,7 +2,7 @@
 {
      public enum eCarColor
     {
-        Yellow,
+        Yellow = 1,
         Blue,
         Black,
         Gray,

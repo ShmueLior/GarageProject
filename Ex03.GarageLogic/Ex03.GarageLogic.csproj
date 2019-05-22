@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enums\eNumCarColor.cs" />
-    <Compile Include="Enums\eNumFuelType.cs" />
+    <Compile Include="Enums\eNumEnergyType.cs" />
     <Compile Include="Enums\eNumMotoLicenseType.cs" />
     <Compile Include="Enums\eNumNumberOfDoorsInCar.cs" />
     <Compile Include="Enums\eNumVehicleStatusInGarage.cs" />

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic.VehicleParts
 {
     public abstract class Engine
     {
-        private float m_RemainderEnergy;
-        private float m_Capacity;
+        protected float m_RemainderEnergy;
+        protected float m_Capacity;
 
         public Engine(float i_RemainderEnergy, float i_Capacity)
         {

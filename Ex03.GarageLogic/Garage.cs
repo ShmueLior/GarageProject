@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using Ex03.GarageLogic.Enums;
 using Ex03.GarageLogic.Vehicles;
-using Ex03.GarageLogic;
+using Ex03.GarageLogic.VehicleParts;
+
 namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private Dictionary<string, GarageClient> m_Clients;
+        private Dictionary<string, GarageClient> m_Clients { get; }
+
         private VehiclesBulider m_VehiclesBulider;
 
         public Garage()
@@ -16,7 +18,7 @@ namespace Ex03.GarageLogic
             m_Clients = new Dictionary<string, GarageClient>();
             m_VehiclesBulider = new VehiclesBulider();
         }
-        
+
         public void InsertNewVehicle(string i_Name, string i_PhoneNumber, Vehicle i_Vehicle)
         {
             GarageClient newClient = new GarageClient(i_Name, i_PhoneNumber, i_Vehicle);
@@ -33,35 +35,66 @@ namespace Ex03.GarageLogic
             return m_Clients.ContainsKey(i_VehicleRegistrationPlates);
         }
 
-        public List <string> GetAllLicenseNumbers()
+        public List<string> GetAllLicenseNumbers()
         {
-            return null; // לבדוק מה הדרך הטובה ביותר להחזיר רשימה של מספרי רישוי
+            List<string> licenseNumbers = new List<string>(m_Clients.Keys);
+
+            return licenseNumbers; 
         }
 
-        public void ChangeStateOfVehicle (string i_LicenseNumber, eVehicleStatusInGarage i_NewStatus)
+        public void ChangeStatusOfVehicle (string i_LicenseNumber, eVehicleStatusInGarage i_NewStatus)
         {
-           // Client vehicle = m_Clients.TryGetValue(i_LicenseNumber);
+            m_Clients[i_LicenseNumber].VehicleStatus = i_NewStatus;
         }
 
-        public void InflateWheelsOfWehicleToMax (string i_LicenseNumber)
+        public void InflateWheelsOfWehicleToMax (string i_LicenseNumber) 
         {
- 
-        }
+            GarageClient garageClient;
+            bool isGargaeClientExist = m_Clients.TryGetValue(i_LicenseNumber, out garageClient);
 
-        public void FuelVehicle (string i_LicenseNumber, eFuelType i_Fuel, float i_AmountToFill)
-        {
- 
-        }
-
-        public void ChargeVehicle(string i_LicenseNumber, float i_AmountToFill)
-        {
+            garageClient.Vehicle.fillAllWheelsToMax();
 
         }
 
-     /*   public string GetVehicleDetails(string i_LicenseNumber)
+        public void FuelVehicle (string i_LicenseNumber, eEnergyType i_FuelType, float i_AmountToFill) 
         {
+            FuelEngine fuelEngine = m_Clients[i_LicenseNumber].Vehicle.GetEngine as FuelEngine;
+
+            fuelEngine.FillEnergy(i_FuelType, i_AmountToFill);
+        }
+
+        public void ChargeVehicle(string i_LicenseNumber, float i_AmountToFill) 
+        {
+                ElectricEngine electricEngine = m_Clients[i_LicenseNumber].Vehicle.GetEngine as ElectricEngine;
+
+                electricEngine.FillEnergy(i_AmountToFill);
             
         }
-     */
+
+        public string GetVehicleDetails(string i_LicenseNumber)
+        {
+            return m_Clients[i_LicenseNumber].ToString();
+        }
+     
+        public int GetNumberOfClients()
+        {
+            return m_Clients.Count;
+        }
+
+        public List<string> GetListOfGarageClientByInputType(eVehicleStatusInGarage i_eVehicleStatusInGarage)
+        {
+            List<string> licenseNumberListByInputType = new List<string>();
+
+            foreach (KeyValuePair<string, GarageClient> entry in m_Clients)
+            {
+                if  (entry.Value.VehicleStatus == i_eVehicleStatusInGarage)
+                    {
+                      licenseNumberListByInputType.Add(entry.Key);
+                    }
+            }
+
+            return licenseNumberListByInputType;
+            
+        }
     }
 }
